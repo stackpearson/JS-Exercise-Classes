@@ -83,7 +83,26 @@ class Car {
     this.tank = 0;
     this.odometer = 0;
   }
-  
+
+  fill(gallons) {
+    this.tank = (this.tank + gallons);
+  }
+
+  drive(distance, milesPerGallon) {
+    //DTE represents distance till empty
+    let DTE = this.tank * this.milesPerGallon;
+
+    if (this.tank > 0) {
+      if (distance > DTE) {
+        this.odometer = (this.odometer+ DTE);
+        this.tank = 0;
+        return `I ran out of fuel at ${this.odometer} miles!`;
+      } else {
+        this.odometer = (this.odometer + distance)
+      }
+      this.tank -= distance / this.milesPerGallon;
+    }
+  };
 }
 
 /*
